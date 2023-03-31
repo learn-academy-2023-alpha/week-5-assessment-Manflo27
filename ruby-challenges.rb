@@ -9,16 +9,67 @@ letter_o = 'o'
 # Expected output: ['coffee', 'soda water']
 letter_t = 't'
 # Expected output: ['tea', 'water', 'soda water']
+# Psedocode 1. Create a method called word
+#           2. Input is taking in an array 
+#           3. Take in a array as an parameter,use filter to return the array that only includes either "o" or "t"
+#           4. Output returns an array of all the words containing that particular letter ['coffee', 'soda water'] ['tea', 'water', 'soda water']
 
+def word array
+    array.filter {|item| item.include?('o')}
+end    
+p word beverages_array
 
+def word array
+    array.filter {|item| item.include?('t')}
+end
+p word beverages_array
 # -------------------2) Create a method that takes in a hash and returns one array with all the hash values at their own index and in alphabetical order. No nested arrays. Use the test variable provided.
 # HINT: Google 'ruby get rid of nested arrays'
 
 us_states = { northwest: ['Washington', 'Oregon', 'Idaho'], southwest: ['California', 'Arizona', 'Nevada'], notheast: ['Maine', 'New Hampshire', 'Rhode Island'] }
 # Expected output: ['Arizona', 'California', 'Idaho', 'Maine', 'Nevada', 'New Hampshire', 'Oregon', 'Rhode Island', 'Washington'] 
 
+# Psedocode 1. Create a method called index
+#           2. Input is taking in an array 
+#           3. Take in a array as an parameter,use filter to return the array that only includes either "o" or "t"
+#           4. Output returns an array of all the words containing that particular letter ['coffee', 'soda water'] ['tea', 'water', 'soda water']
 
+def index (hash) 
+ hash.values.flatten.sort
+end
+p index us_states
 # --------------------3a) Create a class called Bike that is initialized with a model, wheels, and current_speed. The default number of wheels is 2. The current_speed should start at 0. Create a bike_info method that returns a sentence with all the data from the bike object.
+class Bike
+  attr_accessor :model,:wheels,:current_speed
+  
+  def initialize (model, wheels , current_speed)
+    @model = model
+    @wheels = 2 
+    @current_speed = 0
+    
+  end
+  def my_bike(pedal_faster)
+    @current_speed += pedal_faster
+  end
+  def this_bike(brake) 
+    @current_speed -= brake
+
+  end
+  
+  def bike_info
+    "The #{@model} bike has #{@wheels} wheels and is going #{@current_speed} mph"
+
+  end
+end
+
+trek = Bike.new('Trek','2','0')
+p trek.bike_info
+p trek.my_bike(10)
+p trek.my_bike(18)
+p trek.this_bike(5)
+p trek.this_bike(25)
+
+
 
 # Expected output example: 'The Trek bike has 2 wheels and is going 0 mph.'
 
@@ -29,4 +80,5 @@ us_states = { northwest: ['Washington', 'Oregon', 'Idaho'], southwest: ['Califor
 # Expected output example: my_bike.pedal_faster(10) => 10
 # Expected output example: my_bike.pedal_faster(18) => 28
 # Expected output example: my_bike.brake(5) => 23
-# Expected output example: my_bike.brake(25) => 0
+# Expected output example: my_bike.brake(25) => 0    Having trouble with the negative number
+
